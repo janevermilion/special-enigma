@@ -1,0 +1,117 @@
+.control {
+  //font-family: arial;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 5px;
+  padding-top: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.controlIndicator {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+ // background: #e6e6e6;
+  border: 1px solid #B3B8BD;
+  border-radius: 1px;
+}
+//.control:hover input ~ .controlIndicator,
+//.control input:focus ~ .controlIndicator {
+//  background: #cccccc;
+//}
+
+.control input:checked ~ .controlIndicator {
+  background: #50287D;
+}
+//.control:hover input:not([disabled]):checked ~ .controlIndicator,
+//.control input:checked:focus ~ .controlIndicator {
+//  background: #F7F8F8;
+//}
+.control input:disabled ~ .controlIndicator {
+  background: #e6e6e6;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.controlIndicator:after {
+  box-sizing: unset;
+  content: '';
+  position: absolute;
+  display: none;
+}
+.control input:checked ~ .controlIndicator:after {
+  display: block;
+}
+.controlRadio .controlIndicator {
+  border-radius: 50%;
+}
+
+.controlRadio .controlIndicator:after {
+  left: 5px;
+  top: 5px;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: background 250ms;
+}
+.controlRadio input:disabled ~ .controlIndicator:after {
+  background: #7b7b7b;
+}.controlRadio .controlIndicator::before {
+   content: '';
+   display: block;
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 35px;
+   height: 35px;
+   margin-left: -8px;
+   margin-top: -8px;
+   background: #623E8A;
+   border-radius: 3rem;
+   opacity: 0.6;
+   z-index: 99999;
+   transform: scale(0);
+ }
+@keyframes s-ripple {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  20% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.01;
+    transform: scale(1);
+  }
+}
+@keyframes s-ripple-dup {
+  0% {
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+.controlRadio input + .controlIndicator::before {
+  animation: s-ripple 250ms ease-out;
+}
+.controlRadio input:checked + .controlIndicator::before {
+  animation-name: s-ripple-dup;
+}

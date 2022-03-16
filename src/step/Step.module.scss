@@ -1,0 +1,58 @@
+.step {
+  &Wr {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 64px;
+
+  }
+
+  &State {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    margin-right: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    // font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+
+    &Done {
+      background-color: #25D152;
+      color: white;
+    }
+
+    &Curr {
+      background-color: #50287D;
+      color: white;
+
+    }
+
+    &Disabled {
+      background-color: rgba(30, 34, 46, 0.04);
+      color: #858D95;
+    }
+  }
+
+  &Status {
+    margin: 0;
+    padding: 0;
+    //font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+
+    &Disabled {
+      color: #858D95
+
+    }
+  }
+}

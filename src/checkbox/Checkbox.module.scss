@@ -1,0 +1,119 @@
+.control {
+  //font-family: arial;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: relative;
+  padding-left: 34px;
+  margin-bottom: 5px;
+  padding-top: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.controlIndicator {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background: #ffffff;
+  border: 1px solid #B3B8BD;
+  border-radius: 4px;
+}
+//.control:hover input ~ .controlIndicator,
+//.control input:focus ~ .controlIndicator {
+//  background: #cca4ff;
+//  border: 1px solid #cca4ff;
+//
+//}
+
+.control input:checked ~ .controlIndicator {
+  background: #623e8a;
+  border: 1px solid #623e8a;
+}
+//.control:hover input:not([disabled]):checked ~ .controlIndicator,
+//.control input:checked:focus ~ .controlIndicator {
+//  background: #cca4ff;
+//  border: 1px solid #cca4ff;
+//}
+.control input:disabled ~ .controlIndicator {
+  background: #F7F8F8;
+  border: 1px solid #E1E3E4;
+  pointer-events: none;
+}
+.controlIndicator:after {
+  box-sizing: unset;
+  content: '';
+  position: absolute;
+  display: none;
+}
+.control input:checked ~ .controlIndicator:after {
+  display: block;
+}
+.controlCheckbox .controlIndicator:after {
+  left: 6px;
+  top: 3px;
+  width: 4px;
+  height: 6px;
+  border: solid #ffffff;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+.controlCheckbox input:disabled ~ .controlIndicator:after {
+  border-color:#B3B8BD;
+}
+// анимация хз нужно ли тебе
+.controlCheckbox .controlIndicator::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 35px;
+  height: 35px;
+  margin-left: -8px;
+  margin-top: -8px;
+  background: #623E8A;
+  border-radius: 3rem;
+  opacity: 0.6;
+  z-index: 99999;
+  transform: scale(0);
+}
+@keyframes s-ripple {
+  0% {
+    transform: scale(0);
+  }
+  20% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+@keyframes s-ripple-dup {
+  0% {
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+.controlCheckbox input + .controlIndicator::before {
+  animation: s-ripple 250ms ease-out;
+}
+.controlCheckbox input:checked + .controlIndicator::before {
+  animation-name: s-ripple-dup;
+}
